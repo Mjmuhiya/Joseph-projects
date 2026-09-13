@@ -1,0 +1,28 @@
+{
+  "title": "Cloud-Native API Overview",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "panels": [
+    {
+      "title": "Requests per second",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "sum(rate(http_requests_total[1m]))",
+          "legendFormat": "requests/sec"
+        }
+      ]
+    },
+    {
+      "title": "Average request latency",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "sum(rate(http_request_duration_seconds_sum[5m])) / sum(rate(http_request_duration_seconds_count[5m]))",
+          "legendFormat": "seconds"
+        }
+      ]
+    }
+  ]
+}
